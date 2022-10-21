@@ -1,11 +1,13 @@
 <template>
-  <MyList></MyList>
   <div class="listBox mdui-container">
     <div class="content-top">
       <button class="allSelect" @click="selectAll">全选</button>
       <button class="itemAdd" @click="addItem">添加</button>
     </div>
+    <MyList></MyList>
+
   </div>
+
 </template>
 
 <script>
@@ -31,11 +33,12 @@
 </script>
 
 <style>
-
+  
   .content-top{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid black;
   }
   
   button{
@@ -46,11 +49,14 @@
   .allSelect{
     margin-top: 10px;
     margin-left: 10px;
+    margin-bottom: 5px;
     background: red;
   }
   .itemAdd{
     margin-top: 10px;
     margin-right: 10px;
+    margin-bottom: 5px;
+
     background: green;
   }
     
