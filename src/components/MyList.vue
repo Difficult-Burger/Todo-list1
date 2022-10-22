@@ -1,21 +1,37 @@
 <template>
-  <div class="item" >
+  <div class="item"
+    v-for= "(item,index) in list" :key="item.id"
+  >
 
-    <div class="mdui-checkbox">
-      <input type="checkbox" @click="selectItem" />
-      <i class="mdui-checkbox-icon"></i>
+    <div class="checkbox" @click="selectItem">
+      <span :style="item.isCheck ? 'opacity : 1' : 'opacity : 0'"></span>
     </div>
     <input class="input">
-    <div class="delete" @click="deleteItem">
+    <div class="delete" @click="deleteItem(index)">
       <div id="delete-text">删除</div>
     </div>
 
-  </div>  
+  </div> 
+   
 </template>
 
 <script>
   export default{
     name: 'MyList',
+    props:['list'],
+    
+    methods:{
+      deleteItem(index){
+        //console.log('del')
+        this.list.splice(index,1)
+      },
+
+      selectItem(index)
+      {
+        console.log('select')
+        this.list[index].isCheck = !this.list[index].isCheck
+      }
+    }
   }
 
 </script>
