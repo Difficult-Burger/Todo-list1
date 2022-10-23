@@ -3,8 +3,8 @@
     v-for= "(item,index) in list" :key="item.id"
   >
 
-    <div class="checkbox" @click="selectItem">
-      <span :style="item.isCheck ? 'opacity : 1' : 'opacity : 0'"></span>
+    <div class="checkbox" @click="selectItem(index)">
+      <span class="check" :style="item.isCheck ? 'opacity : 1' : 'opacity : 0'"></span>
     </div>
     <input class="input">
     <div class="delete" @click="deleteItem(index)">
@@ -28,7 +28,7 @@
 
       selectItem(index)
       {
-        console.log('select')
+        //console.log(index);
         this.list[index].isCheck = !this.list[index].isCheck
       }
     }
@@ -56,6 +56,17 @@
     height:20px;
     margin-left: 5px;
     margin-right: 20px;
+  }
+  .check{
+    display:flex;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: none;
+    background-color: purple;
+    margin-left: 2.4px;
+    margin-top: 2.35px;
+    
   }
   .delete{
     border: none;
