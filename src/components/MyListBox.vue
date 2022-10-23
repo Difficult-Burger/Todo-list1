@@ -1,8 +1,14 @@
 <template>
   <div class="listBox mdui-container">
     <div class="content-top">
-      <button class="allSelect" @click="selectAll">全选</button>
-      <button class="itemAdd" @click="addItem">添加</button>
+      <div class="content-topleft">
+        <button class="allSelect" @click="selectAll">全选</button>
+        <button class="reverseSelect" @click="selectReverse">反选</button>
+      </div>
+      <div class="content-right">
+        <button class="itemAdd" @click="addItem">添加</button>
+        <button class="theseDelete" @click="deleteThese">批量删除</button>
+      </div>
     </div>
     <MyList :list = "list"></MyList>
     <MyList></MyList>
@@ -21,17 +27,21 @@
     data(){
       return{
         list:[],
-        
-        my_id: global.id
       }
     },
 
     methods:{
 
       selectAll(){
-
+        for(var i=0; i<this.list.length; i++){
+          this.list[i].isCheck = true
+        }
       },
-      
+      selectReverse(){
+        for(var i=0; i<this.list.length; i++){
+          this.list[i].isCheck = !this.list[i].isCheck
+        }
+      },
       addItem(){
         //console.log("add");
         this.list.unshift({
@@ -41,10 +51,15 @@
           time:dayjs(new Date).format("YY-MM-DD HH:mm"),
           }
         )
+      },
+      deleteThese(){
+        for(var i=this.list.length-1; i>= 0; i--){
+          if(this.list[i].isCheck){
+            this.list.splice(i,1)
+          }
+        }
       }
-
     }
-
   }
 
 </script>
@@ -69,12 +84,23 @@
     margin-bottom: 5px;
     background: red;
   }
+  .reverseSelect{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    background: green;
+  }
   .itemAdd{
     margin-top: 10px;
     margin-right: 10px;
     margin-bottom: 5px;
-
     background: green;
+  }
+  .theseDelete{
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    background: red;
   }
     
 </style>
