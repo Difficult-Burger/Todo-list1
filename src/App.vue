@@ -7,12 +7,12 @@
 
 <script>
   import MyHeader from './components/MyHeader.vue'
-  import MyFooter from './components/MyFooter.vue'
   import MyListBox from './components/MyListBox.vue'
+  import TDesign from 'tdesign-vue-next';
 
   export default {
     name: 'App',
-    components:{MyHeader, MyFooter, MyListBox}
+    components:{MyHeader, MyListBox, TDesign}
 
   }
 </script>

@@ -6,7 +6,11 @@
     <div class="checkbox" @click="selectItem(index)">
       <span class="check" :style="item.isCheck ? 'opacity : 1' : 'opacity : 0'"></span>
     </div>
-    <input class="input">
+    <input 
+      class="input"
+      type="text" 
+      v-model="item.text"
+    >
     <div class="delete" @click="deleteItem(index)">
       <div id="delete-text">删除</div>
     </div>
@@ -84,6 +88,7 @@
     color:white;    
   }
   .input{
+    
     flex:1;
     border:none;
     outline:none;
