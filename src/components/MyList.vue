@@ -2,7 +2,6 @@
   <div class="item"
     v-for= "(item,index) in list" :key="item.id"
   >
-
     <div class="checkbox" @click="selectItem(index)">
       <span class="check" :style="item.isCheck ? 'opacity : 1' : 'opacity : 0'"></span>
     </div>
@@ -20,9 +19,11 @@
 </template>
 
 <script>
+  import global from '../global.vue'
   export default{
     name: 'MyList',
-    props:['list'],
+    props:['list','finishList'],
+    
     
     methods:{
       deleteItem(index){
@@ -32,8 +33,28 @@
 
       selectItem(index)
       {
-        //console.log(index);
-        this.list[index].isCheck = !this.list[index].isCheck
+        ///console.log(index);
+        this.list[index].isCheck = !this.list[index].isCheck;
+        /*if(this.list[index].isCheck){
+          this.finishList.push(
+            {
+              finishid: global.finishId++,
+              matchid: index,
+              text: this.list[index].text,
+            }
+          );
+          //console.log(global.finishId);
+          //console.log(this.list[index].text);
+          //console.log(this.finishList[global.finishId-1].text);
+        }
+        else{
+          for(var i=0;i<this.finishList.length; i++)
+          {
+            if(i == this.finishList)
+          }
+          this.finishList.splice(global.finishId-1, 1)
+          global.finishId--;
+        }*/
       }
     }
   }

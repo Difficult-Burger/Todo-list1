@@ -1,5 +1,6 @@
 <script>
 export default{
-    id:0
+    id:0,
+    finishId:0
 }
 </script>

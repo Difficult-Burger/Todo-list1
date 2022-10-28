@@ -6,11 +6,14 @@
         <button class="reverseSelect" @click="selectReverse">反选</button>
       </div>
 
-      <div class="content-topmid">
-        <t-swiper class="tdesign-demo-block--swiper" :navigation="{ showSlideBtn: 'never',type: 'hide'}">
+      <div class="content-topmid" >
+        <t-swiper class="tdesign-demo-block--swiper"
+          :navigation="{ showSlideBtn: 'never', type:'hide'}"
+        >
           <t-swiper-item v-for="item in list" :key="item">
-            <div class="demo-item">{{ item.text }}</div>
+            <div class="demo-item">{{item.text}}</div>
           </t-swiper-item>
+          
         </t-swiper>       
       </div>
       
@@ -19,9 +22,7 @@
         <button class="theseDelete" @click="deleteThese">批量删除</button>
       </div>
     </div>
-    <MyList :list = "list"></MyList>
-    <MyList></MyList>
-
+    <MyList :list = "list" :finishList="finishList" ></MyList>
   </div>
 
 </template>
@@ -39,8 +40,10 @@
     data(){
       return{
         list:[],
+        finishList:[]
       }
     },
+    
 
     methods:{
 
@@ -57,10 +60,10 @@
       addItem(){
         //console.log("add");
         this.list.unshift({
-          id:++global.id,
-          isCheck:false,
-          text:"",
-          time:dayjs(new Date).format("YY-MM-DD HH:mm"),
+          id: global.id++,
+          isCheck: false,
+          text: "",
+          time: dayjs(new Date).format("YY-MM-DD HH:mm"),
           }
         )
       },
