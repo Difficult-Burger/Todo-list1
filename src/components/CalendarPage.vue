@@ -1,5 +1,5 @@
 <template>
-    <div>我是日历我是日历我是日历</div>
+    <t-calendar />
 </template>
 
 <script>
